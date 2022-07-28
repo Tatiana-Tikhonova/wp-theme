@@ -1,0 +1,89 @@
+// встроенный математический модуль scss
+@use "sass:math" as math;
+/* =============подключение шрифтов==============*/
+
+@mixin fonts($font_name, $file_name, $weight, $style) {
+    @font-face {
+        font-family: $font_name;
+        font-display: swap;
+        src: url("../fonts/#{$file_name}.woff") format("woff"),
+        url("../fonts/#{$file_name}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-style: #{$style};
+    }
+}
+
+@import "_fonts";
+// ============переменные===============
+// экран, контейнер и брейкпойнты
+$minwidth: 320px;
+$maxScreenWidth: 1920px;
+$maxContainerWidth: 1320px;
+$md1: $maxContainerWidth;
+$md2: 1200px;
+$md3: 992px;
+$md4: 768px;
+$md5: 576px;
+$md6: 480px;
+// боковые поля
+$fields: 12px;
+// половина межколоночника
+$gap: math.div(24px, 2);
+// корневой размер шрифта для тега html и функции rem()
+$rem: 14;
+
+// если нужна поддержка браузеров не понимающих css vars ( с откатом)
+/**
+значения разделенные запятыми внутри scss map вызывают ошибку компиляции
+поэтому создаем для них отдельные переменные, а потом присваиваем эти переменные
+в качестве значений для ключей scss map
+*/
+// $headerFont: "Roboto-Bold", Arial, Helvetica, sans-serif;
+// $mediumFont: "Roboto-Medium", Arial, Helvetica, sans-serif;
+// $mainFont: "Roboto-Regular", Arial, Helvetica, sans-serif;
+// // scss map obj
+// $vars :(headerFont: $headerFont,
+//     mediumFont: $mediumFont,
+//     mainFont: $mainFont,
+//     box-shadow: 0px 0px 10px rgba(54, 68, 70, 0.1),
+//     text-color: #151a1b,
+//     primary-color: #509900,
+//     accent-color: #f84e1d,
+//     dark-color: #364446,
+//     dark-color-lighten: lighten(#364446, 30%),
+//     light-color: #ffffff,
+//     light-blue-grey: #d7e0e2,
+//     shadow-block: 0px 0px 10px rgba(54, 68, 70, 0.2),
+//     shadow-primary: 0px 0px 10px rgba(80, 153, 0, 0.7),
+//     shadow-accent: 0px 0px 10px rgba(248, 78, 29, 0.7),
+// );
+
+// :root {
+
+//     @each $prop,
+//     $val in $vars {
+//         --#{$prop}: #{$val};
+//     }
+// }
+
+// @mixin var($prop, $variable) {
+//     #{$prop}: map-get($vars, $variable);
+//     #{$prop}: var(--#{$variable});
+// }
+
+// если поддерживаем только нормальные браузеры
+:root {
+    --headerFont: "Roboto-Bold", Arial, Helvetica, sans-serif;
+    --mediumFont: "Roboto-Medium", Arial, Helvetica, sans-serif;
+    --mainFont: "Roboto-Regular", Arial, Helvetica, sans-serif;
+    --text-color: #151a1b;
+    --primary-color: #509900;
+    --accent-color: #f84e1d;
+    --dark-color: #364446;
+    --dark-color-lighten: lighten(#364446, 30%);
+    --light-color: #ffffff;
+    --light-blue-grey: #d7e0e2;
+    --shadow-block: 0px 0px 10px rgba(54, 68, 70, 0.2);
+    --shadow-primary: 0px 0px 10px rgba(80, 153, 0, 0.7);
+    --shadow-accent: 0px 0px 10px rgba(248, 78, 29, 0.7);
+}
