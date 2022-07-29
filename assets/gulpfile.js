@@ -2,18 +2,22 @@ const path = {
 	build: {
 		css: "./css/",
 		js: "./js/",
+		fonts: "./fonts",
 	},
 	src: {
 		css: "./dev/scss/**/*.scss",
 		js: "./dev/js/**/*.js",
+		fonts: "./dev/fonts/**/*.ttf",
 	},
 	watch: {
 		css: "./dev/scss/**/*.scss",
 		js: "./dev/js/**/*.js",
+		fonts: "./dev/fonts/**/*.ttf",
 	},
 	clean: {
 		css: "./css/**/*.css",
 		js: "./js/**/*.js",
+		fonts: "./fonts/**/*.woff*",
 	},
 }
 
@@ -33,7 +37,7 @@ const { src, dest } = require('gulp'),
 
 
 function clean() {
-	return del(path.clean.css, path.clean.js);
+	return del(path.clean.css, path.clean.js, path.clean.fonts);
 }
 
 function css() {
@@ -94,12 +98,12 @@ function js() {
 }
 
 function fonts() {
-	src("./src/assets/fonts/**/*.ttf")
+	src(path.src.fonts)
 		.pipe(ttf2woff())
-		.pipe(dest("./build/assets/fonts/"));
-	return src("./src/assets/fonts/**/*.ttf")
+		.pipe(dest(path.build.fonts));
+	return src(path.src.fonts)
 		.pipe(ttf2woff2())
-		.pipe(dest("./build/assets/fonts/"));
+		.pipe(dest(path.build.fonts));
 };
 
 
@@ -109,12 +113,13 @@ function watchFiles(done) {
 	done();
 }
 
-const build = gulp.series(clean, gulp.parallel(css, js));
+const build = gulp.series(clean, gulp.parallel(css, js, fonts));
 
 const watch = gulp.parallel(build, watchFiles);
 
 exports.js = js;
 exports.css = css;
+exports.fonts = fonts;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;

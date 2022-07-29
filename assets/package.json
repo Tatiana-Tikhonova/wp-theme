@@ -9,7 +9,8 @@
   "author": "TanTikh",
   "license": "ISC",
   "browserslist": [
-    "> 0.1% in RU"
+    "> 0.1% in RU",
+    "not dead"
   ],
   "devDependencies": {
     "@babel/core": "^7.10.5",

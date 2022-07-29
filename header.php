@@ -42,6 +42,12 @@
 						<?php endif; ?>
 					</div>
 				</div><!-- .site-branding -->
+
+				<?php
+				get_search_form();
+				?>
+
+				<button type="button" class="header-search__open">&#128269;</button>
 				<?php
 				wp_nav_menu(
 					array(
@@ -53,14 +59,17 @@
 						'menu_class' => 'main-navigation__menu main-menu',
 						'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 						'fallback_cb' => '',
+
 					)
 				);
 				?>
 				<!-- #site-navigation -->
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<span></span>
-					<span></span>
-					<span></span>
+					<span class="menu-toggle__wrapper">
+						<span class="menu-toggle__line"></span>
+						<span class="menu-toggle__line"></span>
+						<span class="menu-toggle__line"></span>
+					</span>
 				</button>
 			</div>
 		</header>
