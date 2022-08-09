@@ -34,9 +34,6 @@ html,
 body {
 	height: 100%;
 	width: 100%;
-	// box-sizing: border-box;
-	// margin: 0;
-	// padding: 0;
 	min-width: 320px;
 	position: relative;
 	line-height: 150%;
@@ -79,19 +76,15 @@ button,
 input,
 optgroup,
 select,
-textarea {
+textarea,
+input:focus,
+textarea:focus {
+	margin: 0;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
-	margin: 0;
 	text-transform: none;
-}
-
-:focus,
-:active,
-a:focus,
-a:active {
-	outline: transparent;
+	color: inherit;
 }
 
 a,
@@ -100,31 +93,19 @@ a:focus,
 a:active,
 a:visited {
 	text-decoration: none;
-	outline: transparent;
+
 }
 
-:focus,
-:active,
-button,
-button:focus input,
-input:focus {
-	outline: transparent;
-}
+// :focus,
+// :active,
+// button,
+// input,
+// button:focus,
+// input:focus {
+// 	outline: 1px solid red;
+// }
 
 a,
-button {
-	cursor: pointer;
-	background-color: transparent;
-	border: none;
-}
-
-input,
-textarea,
-input:focus,
-textarea:focus {
-	color: inherit;
-}
-
 button,
 button:active,
 button:focus,
@@ -139,11 +120,9 @@ input[type="submit"]:active,
 input[type="submit"]:focus {
 	-webkit-appearance: button;
 	border: none;
+	cursor: pointer;
 }
 
-select {
-	border: 0;
-}
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
@@ -303,13 +282,13 @@ ol {
 	margin: 0 0 1.5em 1.5em;
 }
 
-ul {
-	list-style: disc;
-}
+// ul {
+// 	list-style: disc;
+// }
 
-ol {
-	list-style: decimal;
-}
+// ol {
+// 	list-style: decimal;
+// }
 
 li>ul,
 li>ol {

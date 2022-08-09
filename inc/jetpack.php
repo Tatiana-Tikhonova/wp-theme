@@ -15,14 +15,14 @@
  * See: https://jetpack.com/support/responsive-videos/
  * See: https://jetpack.com/support/content-options/
  */
-function prefix_jetpack_setup()
+function tati_jetpack_setup()
 {
 	// Add theme support for Infinite Scroll.
 	add_theme_support(
 		'infinite-scroll',
 		array(
 			'container' => 'main',
-			'render'    => 'prefix_infinite_scroll_render',
+			'render'    => 'tati_infinite_scroll_render',
 			'footer'    => 'page',
 		)
 	);
@@ -35,7 +35,7 @@ function prefix_jetpack_setup()
 		'jetpack-content-options',
 		array(
 			'post-details' => array(
-				'stylesheet' => 'prefix-style',
+				'stylesheet' => 'tati-style',
 				'date'       => '.posted-on',
 				'categories' => '.cat-links',
 				'tags'       => '.tags-links',
@@ -50,13 +50,13 @@ function prefix_jetpack_setup()
 		)
 	);
 }
-add_action('after_setup_theme', 'prefix_jetpack_setup');
+add_action('after_setup_theme', 'tati_jetpack_setup');
 
-if (!function_exists('prefix_infinite_scroll_render')) :
+if (!function_exists('tati_infinite_scroll_render')) :
 	/**
 	 * Custom render function for Infinite Scroll.
 	 */
-	function prefix_infinite_scroll_render()
+	function tati_infinite_scroll_render()
 	{
 		while (have_posts()) {
 			the_post();

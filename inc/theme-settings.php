@@ -3,10 +3,10 @@
 /**
  * базовый функционал темы
  */
-if (!function_exists('prefix_setup')) :
-    function prefix_setup()
+if (!function_exists('tati_setup')) :
+    function tati_setup()
     {
-        load_theme_textdomain('prefix', get_template_directory() . '/languages');
+        load_theme_textdomain('tati', get_template_directory() . '/languages');
         add_theme_support('automatic-feed-links');
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
@@ -25,7 +25,7 @@ if (!function_exists('prefix_setup')) :
         add_theme_support(
             'custom-background',
             apply_filters(
-                'prefix_custom_background_args',
+                'tati_custom_background_args',
                 array(
                     'default-color' => 'ffffff',
                     'default-image' => '',
@@ -49,19 +49,19 @@ if (!function_exists('prefix_setup')) :
 
         register_nav_menus(
             array(
-                'menu-1' => esc_html__('Primary', 'prefix'),
+                'menu-1' => esc_html__('Primary', 'tati'),
             )
         );
     }
-    add_action('after_setup_theme', 'prefix_setup');
+    add_action('after_setup_theme', 'tati_setup');
 endif;
 
 /**
  * базовая ширина контента в пикселях
  * @global int $content_width
  */
-function prefix_content_width()
-{
-    $GLOBALS['content_width'] = apply_filters('prefix_content_width', 640);
-}
-add_action('after_setup_theme', 'prefix_content_width', 0);
+// function tati_content_width()
+// {
+//     $GLOBALS['content_width'] = apply_filters('tati_content_width', 1000);
+// }
+// add_action('after_setup_theme', 'tati_content_width', 0);

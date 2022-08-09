@@ -75,19 +75,15 @@ button,
 input,
 optgroup,
 select,
-textarea {
+textarea,
+input:focus,
+textarea:focus {
+  margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  margin: 0;
   text-transform: none;
-}
-
-:focus,
-:active,
-a:focus,
-a:active {
-  outline: transparent;
+  color: inherit;
 }
 
 a,
@@ -96,31 +92,9 @@ a:focus,
 a:active,
 a:visited {
   text-decoration: none;
-  outline: transparent;
-}
-
-:focus,
-:active,
-button,
-button:focus input,
-input:focus {
-  outline: transparent;
 }
 
 a,
-button {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-}
-
-input,
-textarea,
-input:focus,
-textarea:focus {
-  color: inherit;
-}
-
 button,
 button:active,
 button:focus,
@@ -135,10 +109,7 @@ input[type=submit]:active,
 input[type=submit]:focus {
   -webkit-appearance: button;
   border: none;
-}
-
-select {
-  border: 0;
+  cursor: pointer;
 }
 
 button::-moz-focus-inner,
@@ -296,14 +267,6 @@ hr {
 ul,
 ol {
   margin: 0 0 1.5em 1.5em;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
 }
 
 li > ul,
@@ -603,10 +566,24 @@ input[type=submit]:active {
   display: none;
 }
 
+.entry-meta {
+  margin-bottom: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
 .page-content,
 .entry-content,
 .entry-summary {
   margin: 1.5em 0 0;
+}
+
+.entry-footer {
+  margin: 1.5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 
 .page-links {
@@ -831,6 +808,17 @@ input[type=submit]:active {
   padding: 20px 0px;
 }
 
+.site-header__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .site-header__container {
   display: flex;
   justify-content: space-between;
@@ -953,6 +941,14 @@ input[type=submit]:active {
 
 .sidebar {
   flex: 0 0 25%;
+}
+
+.wp-block-quote {
+  color: red;
+}
+
+.wp-block-gallery.has-nested-images.columns-default figure.wp-block-image:not(#individual-image) {
+  flex-grow: 0;
 }
 
 .site-footer {
@@ -1175,6 +1171,18 @@ input[type=submit]:active {
     flex: 0 0 20px;
     margin-left: 10px;
     cursor: pointer;
+  }
+
+  .wp-block-gallery.has-nested-images.columns-default figure.wp-block-image:not(#individual-image) {
+    width: calc(50% - var(--wp--style--unstable-gallery-gap, 16px) / 2);
+  }
+
+  .wp-block-media-text.is-stacked-on-mobile {
+    grid-template-columns: 100% !important;
+  }
+
+  .wp-block-media-text .wp-block-media-text__content {
+    padding: 0;
   }
 
   .site-footer__item {

@@ -5,13 +5,13 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function prefix_widgets_init()
+function tati_widgets_init()
 {
     register_sidebar(
         array(
-            'name'          => esc_html__('Sidebar', 'prefix'),
+            'name'          => esc_html__('Sidebar', 'tati'),
             'id'            => 'sidebar-1',
-            'description'   => esc_html__('Add widgets here.', 'prefix'),
+            'description'   => esc_html__('Add widgets here.', 'tati'),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<div class="widget-title">',
@@ -20,9 +20,9 @@ function prefix_widgets_init()
     );
     register_sidebar(
         array(
-            'name'          => esc_html__('Footer', 'prefix'),
+            'name'          => esc_html__('Footer', 'tati'),
             'id'            => 'sidebar-footer',
-            'description'   => esc_html__('Add widgets here.', 'prefix'),
+            'description'   => esc_html__('Add widgets here.', 'tati'),
             'before_widget' => '<section id="%1$s" class="site-footer__item widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<div class="widget-title">',
@@ -30,4 +30,4 @@ function prefix_widgets_init()
         )
     );
 }
-add_action('widgets_init', 'prefix_widgets_init');
+add_action('widgets_init', 'tati_widgets_init');

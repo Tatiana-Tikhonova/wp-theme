@@ -25,10 +25,31 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site-wrapper">
-		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'prefix'); ?></a>
+		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'tati'); ?></a>
 		<header id="masthead" class="site-header">
+			<div class="customize-test" style="color:<?php echo get_theme_mod('my_color_control'); ?>;">
+				<p><?php //echo get_theme_mod('text_input'); 
+					?></p>
+				<?php
+				echo '<pre>';
+				print_r(get_theme_mod('my_media_control'));
+				echo '</pre>';
+				echo wp_get_attachment_image(get_theme_mod('my_media_control'), 'full');
+				// if (get_theme_mod('my_media_control')) {
+				// 	echo '<video controls="controls">
+				// 	<source src="' . wp_get_attachment_url(get_theme_mod('my_media_control')) . '">
+				// 	</video>';
+				// }
+				// if (get_theme_mod('my_media_control')) {
+				// 	echo '<audio controls src="' . wp_get_attachment_url(get_theme_mod('my_media_control')) . '"></audio>';
+				// }
+				//wp_add_inline_script('wayup-customizer', get_theme_mod('my_code_editor')); 
+				?>
+			</div>
 			<div class="container site-header__container">
-				<?php the_header_image_tag(); ?>
+				<?php
+				//the_header_image_tag(array('class' => 'site-header__bg')); 
+				?>
 				<div class="site-branding">
 					<?php
 					the_custom_logo();
@@ -36,9 +57,9 @@
 					<div class="site-branding__text">
 						<div class="site-branding__title"><?php bloginfo('name'); ?></div>
 						<?php
-						$prefix_description = get_bloginfo('description', 'display');
-						if ($prefix_description || is_customize_preview()) : ?>
-							<div class="site-branding__description"><?php echo $prefix_description; ?></div>
+						$tati_description = get_bloginfo('description', 'display');
+						if ($tati_description || is_customize_preview()) : ?>
+							<div class="site-branding__description"><?php echo $tati_description; ?></div>
 						<?php endif; ?>
 					</div>
 				</div><!-- .site-branding -->

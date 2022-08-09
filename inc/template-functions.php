@@ -12,7 +12,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function prefix_body_classes($classes)
+function tati_body_classes($classes)
 {
 	// Adds a class of hfeed to non-singular pages.
 	if (!is_singular()) {
@@ -26,32 +26,32 @@ function prefix_body_classes($classes)
 
 	return $classes;
 }
-add_filter('body_class', 'prefix_body_classes');
+add_filter('body_class', 'tati_body_classes');
 
 /**
  * Add a pingback url auto-discovery header for single posts, pages, or attachments.
  */
-function prefix_pingback_header()
+function tati_pingback_header()
 {
 	if (is_singular() && pings_open()) {
 		printf('<link rel="pingback" href="%s">', esc_url(get_bloginfo('pingback_url')));
 	}
 }
-add_action('wp_head', 'prefix_pingback_header');
+add_action('wp_head', 'tati_pingback_header');
 
 
 /**
  * Change logo classes
  */
 
-function taty_change_logo_class($html)
+function tati_change_logo_class($html)
 {
 	$html = str_replace('custom-logo', 'site-branding__logo', $html);
 	$html = str_replace('custom-logo-link', 'site-branding__logo-link', $html);
 
 	return $html;
 }
-add_filter('get_custom_logo', 'taty_change_logo_class');
+add_filter('get_custom_logo', 'tati_change_logo_class');
 
 /**
  * Main menu filters
@@ -67,7 +67,7 @@ add_filter('get_custom_logo', 'taty_change_logo_class');
  *
  * @return string[]
  */
-function taty_submenu_css_class_filter($classes, $args, $depth)
+function tati_submenu_css_class_filter($classes, $args, $depth)
 {
 
 	if ('menu-1' == $args->theme_location) {
@@ -78,7 +78,7 @@ function taty_submenu_css_class_filter($classes, $args, $depth)
 
 	return $classes;
 }
-add_filter('nav_menu_submenu_css_class', 'taty_submenu_css_class_filter', 10, 3);
+add_filter('nav_menu_submenu_css_class', 'tati_submenu_css_class_filter', 10, 3);
 
 /**
  * Function for `nav_menu_css_class` filter-hook.
@@ -90,7 +90,7 @@ add_filter('nav_menu_submenu_css_class', 'taty_submenu_css_class_filter', 10, 3)
  *
  * @return string[]
  */
-function taty_menu_css_class_filter($classes, $menu_item, $args, $depth)
+function tati_menu_css_class_filter($classes, $menu_item, $args, $depth)
 {
 
 	if ('menu-1' == $args->theme_location) {
@@ -104,7 +104,7 @@ function taty_menu_css_class_filter($classes, $menu_item, $args, $depth)
 
 	return $classes;
 }
-add_filter('nav_menu_css_class', 'taty_menu_css_class_filter', 10, 4);
+add_filter('nav_menu_css_class', 'tati_menu_css_class_filter', 10, 4);
 
 /**
  * Function for `nav_menu_link_attributes` filter-hook.
@@ -116,7 +116,7 @@ add_filter('nav_menu_css_class', 'taty_menu_css_class_filter', 10, 4);
  *
  * @return array
  */
-function taty_menu_link_attributes_filter($atts, $menu_item, $args, $depth)
+function tati_menu_link_attributes_filter($atts, $menu_item, $args, $depth)
 
 {
 
@@ -130,7 +130,7 @@ function taty_menu_link_attributes_filter($atts, $menu_item, $args, $depth)
 
 	return $atts;
 }
-add_filter('nav_menu_link_attributes', 'taty_menu_link_attributes_filter', 10, 4);
+add_filter('nav_menu_link_attributes', 'tati_menu_link_attributes_filter', 10, 4);
 
 
 /**
@@ -143,7 +143,7 @@ add_filter('nav_menu_link_attributes', 'taty_menu_link_attributes_filter', 10, 4
  *
  * @return string
  */
-function taty_filter_walker_nav_menu_start_el($item_output, $item, $depth, $args)
+function tati_filter_walker_nav_menu_start_el($item_output, $item, $depth, $args)
 {
 	if ('menu-1' == $args->theme_location) {
 		if ($item->current == 1) {
@@ -164,4 +164,4 @@ function taty_filter_walker_nav_menu_start_el($item_output, $item, $depth, $args
 
 	return $item_output;
 }
-add_filter('walker_nav_menu_start_el', 'taty_filter_walker_nav_menu_start_el', 10, 4);
+add_filter('walker_nav_menu_start_el', 'tati_filter_walker_nav_menu_start_el', 10, 4);
