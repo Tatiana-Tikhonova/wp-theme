@@ -153,11 +153,43 @@ if (!function_exists('tati_post_thumbnail')) :
 				?>
 			</a>
 
-<?php
+		<?php
 		endif; // End is_singular().
 	}
 endif;
 
+if (!function_exists('tati_adaptive_post_thumbnail')) :
+	function tati_adaptive_post_thumbnail($post_id)
+	{
+		if (post_password_required() || is_attachment() || !has_post_thumbnail()) {
+			return;
+		}
+		$image_id = get_post_thumbnail_id($post_id);
+		$alt   = trim(strip_tags(get_post_meta($image_id, '_wp_attachment_image_alt', true)));
+
+		// для страницы поста
+		$img_src_single = wp_get_attachment_image_url($image_id, 'full');
+		$img_srcset_single = wp_get_attachment_image_srcset($image_id, 'medium-large');
+
+		// для страницы архива или индекса
+		$img_src_loop = wp_get_attachment_image_url($image_id, 'medium-large');
+		$img_srcset_loop = wp_get_attachment_image_srcset($image_id, 'medium');
+
+		if (is_singular()) :
+		?>
+			<div class="post-thumbnail">
+				<img src="<?php echo esc_url($img_src_single); ?>" srcset="<?php echo esc_attr($img_srcset_single); ?>" sizes="(max-width: 480px) 300px, (max-width: 768px) 768px, 100%" alt="<?php echo $alt ?>">
+			</div>
+
+		<?php else : ?>
+
+			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<img src="<?php echo esc_url($img_src_loop); ?>" srcset="<?php echo esc_attr($img_srcset_loop); ?>" sizes="(max-width: 768px) 300px, 768px" alt="<?php echo $alt ?>">
+			</a>
+
+<?php endif;
+	}
+endif;
 if (!function_exists('wp_body_open')) :
 	/**
 	 * Shim for sites older than 5.2.

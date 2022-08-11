@@ -30,7 +30,7 @@
 		<?php endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php tati_post_thumbnail(); ?>
+	<?php tati_adaptive_post_thumbnail(get_the_ID()); ?>
 
 	<div class="entry-content">
 		<?php
