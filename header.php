@@ -25,6 +25,13 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site-wrapper">
+		<!-- сетка для отладки -->
+		<div class="grid-debug">
+			<div class="grid-debug__container">
+				<div></div>
+			</div>
+		</div>
+		<!-- конец сетки для отладки -->
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'tati'); ?></a>
 		<header id="masthead" class="site-header">
 			<div class="customize-test" style="color:<?php echo get_theme_mod('my_color_control'); ?>;">

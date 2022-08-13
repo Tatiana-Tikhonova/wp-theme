@@ -32,8 +32,12 @@
 
 	<?php tati_adaptive_post_thumbnail(get_the_ID()); ?>
 
+
+
 	<div class="entry-content">
 		<?php
+
+
 		the_content(
 			sprintf(
 				wp_kses(
